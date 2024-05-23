@@ -1,0 +1,23 @@
+ALTER TABLE Tags
+ADD COLUMN PostID INT;
+
+UPDATE tags
+SET tag_name = 'New Tag Name'
+WHERE tag_id IN (
+    SELECT tag_id
+    FROM posts
+    WHERE post_status = 'published'
+);
+
+CREATE TABLE TestCases (
+    TestCaseID INT PRIMARY KEY,
+    PageName VARCHAR(50),
+    TestDescription TEXT,
+    TestResult VARCHAR(20)
+);
+
+INSERT INTO TestCases (TestCaseID, PageName, TestDescription, TestResult)
+VALUES (1, 'Homepage', 'Check if logo loads correctly', 'Pass');
+
+INSERT INTO TestCases (TestCaseID, PageName, TestDescription, TestResult)
+VALUES (2, 'ProductPage', 'Verify add to cart functionality', 'Fail');
