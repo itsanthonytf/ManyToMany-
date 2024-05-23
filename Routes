@@ -1,0 +1,38 @@
+SELECT * FROM tags;
+
+SELECT *
+FROM tags
+WHERE tag_id = [tag-id];
+CREATE PROCEDURE GetTagDetails
+    @TagID INT
+AS
+BEGIN
+    SELECT *
+    FROM tags
+    WHERE tag_id = @TagID;
+END;
+CREATE VIEW TagDetails AS
+SELECT *
+FROM tags
+WHERE tag_id = [tag-id];
+SELECT CONCAT('Edit Tag: ', '/tags/', [tag-id], '/edit') AS EditLink,
+       CONCAT('Delete Tag: ', '/tags/', [tag-id], '/delete') AS DeleteLink
+FROM tags
+WHERE tag_id = [tag-id];
+
+SELECT * FROM tags WHERE tags = 'new';
+
+CREATE PROCEDURE tags_new
+AS
+BEGIN
+    -- Process add form
+    -- Add tag
+    -- Redirect to tag list
+END;
+
+SELECT * FROM tags WHERE tag_id = [tag-id];
+
+POST /tags/[tag-id]/edit : Process edit form, edit tag, and redirects to the tags list.
+
+DELETE FROM tags
+WHERE tag_id = [tag-id];
