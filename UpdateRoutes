@@ -1,0 +1,3 @@
+UPDATE posts
+SET route = CONCAT(route, '/tags')
+WHERE post_id = {post_id};
