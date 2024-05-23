@@ -1,0 +1,24 @@
+CREATE TABLE tags (
+    id INT PRIMARY KEY,
+    name VARCHAR(255) UNIQUE
+);
+
+CREATE TABLE PostTag (
+    PostID INT,
+    TagID INT,
+    PRIMARY KEY (PostID, TagID),
+    FOREIGN KEY (PostID) REFERENCES Post(PostID),
+    FOREIGN KEY (TagID) REFERENCES Tag(TagID)
+);
+
+-- Adding relationship to see tags for a post
+ALTER TABLE posts
+ADD CONSTRAINT fk_post_tags
+FOREIGN KEY (tag_id)
+REFERENCES tags(tag_id);
+
+-- Adding relationship to see posts for a tag
+ALTER TABLE tags
+ADD CONSTRAINT fk_tag_posts
+FOREIGN KEY (post_id)
+REFERENCES posts(post_id);
